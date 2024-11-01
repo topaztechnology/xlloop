@@ -22,7 +22,7 @@ public class BinaryCodecTest extends TestCase
     public void testEof() throws Exception {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         out.write(XLoper.xlTypeStr);
-        out.write(10);
+        out.write(5);
         out.write("hello".getBytes());
         ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
         XLoper x = BinaryCodec.decode(in);

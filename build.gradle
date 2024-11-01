@@ -1,0 +1,50 @@
+apply plugin: 'java'
+
+sourceCompatibility = '1.7'
+
+jar {
+    archiveBaseName = 'xlloop'         // Set the name of the JAR file
+    archiveVersion = '0.3.2-fix'           // Set the version
+}
+
+repositories {
+    mavenCentral()  // Ensures Gradle can download common dependencies
+    flatDir {
+        dirs 'org.boris.xlloop/lib'  // Specifies the directory for local JAR files
+    }
+}
+
+dependencies {
+    // JUnit 3 dependency for testing
+    testImplementation 'junit:junit:3.8.2'
+
+    // External JAR files in the lib directory
+    implementation name: 'bsf'
+    implementation name: 'commons-logging-1.1.1'
+    implementation name: 'jatha-2.8'
+    implementation name: 'js'
+    implementation name: 'rupy-0.3.3'
+    implementation name: 'json'
+    implementation name: 'servlet-api-2.5'
+
+    // Optional: add other project dependencies if required, e.g., ':org.boris.jxll' for multi-module builds
+    // implementation project(':org.boris.jxll')
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['org.boris.jxll/java/src', 'org.boris.xlloop/java/src']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['org.boris.jxll/java/test', 'org.boris.xlloop/java/test']
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
