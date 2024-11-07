@@ -60,7 +60,6 @@ public class FunctionInformationHandler implements IFunctionHandler, IBuiltinFun
         Map m = new TreeMap();
         for (Iterator i = functions.iterator(); i.hasNext();) {
             FunctionInformation fi = (FunctionInformation) i.next();
-            System.out.println(fi.getName());
             m.put(fi.getName(), fi);
         }
 
@@ -69,7 +68,6 @@ public class FunctionInformationHandler implements IFunctionHandler, IBuiltinFun
             FunctionInformation[] fis = fp.getFunctions();
             if (fis != null) {
                 for (int j = 0; j < fis.length; j++) {
-                    System.out.println(fis[j].getName());
                     m.put(fis[j].getName(), fis[j]);
                 }
             }
